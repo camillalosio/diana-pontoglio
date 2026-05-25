@@ -169,7 +169,15 @@ function SeoJsonLd() {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }
 
-function SectionTitle({ eyebrow, title, subtitle }) {
+function SectionTitle({
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+}) {
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
       <p className="text-xs font-bold uppercase tracking-[.35em] text-[#91B3BE]">{eyebrow}</p>
