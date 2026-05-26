@@ -169,8 +169,21 @@ function SeoJsonLd() {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }
 
-function SectionTitle({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
+type SectionTitleProps = {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+};
+
+const SectionTitle = ({ eyebrow, title, subtitle }: SectionTitleProps) => {
   return (
+    <div className="mx-auto mb-12 max-w-3xl text-center">
+      <p className="text-xs font-bold uppercase tracking-[.35em] text-[#91B3BE]">{eyebrow}</p>
+      <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-[#274955] md:text-5xl">{title}</h2>
+      {subtitle && <p className="mt-5 text-lg leading-8 text-[#506877]">{subtitle}</p>}
+    </div>
+  );
+};
     <div className="mx-auto mb-12 max-w-3xl text-center">
       <p className="text-xs font-bold uppercase tracking-[.35em] text-[#91B3BE]">{eyebrow}</p>
       <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-[#274955] md:text-5xl">{title}</h2>
@@ -179,7 +192,13 @@ function SectionTitle({ eyebrow, title, subtitle }: { eyebrow: string; title: st
   );
 }
 
-function ImagePlaceholder({ label, dark = false }) {
+function ImagePlaceholder({
+  label,
+  dark = false,
+}: {
+  label: string;
+  dark?: boolean;
+}) {
   return (
     <div className={`grid h-full min-h-[260px] place-items-center rounded-[2rem] border border-white/35 ${dark ? "bg-[#274955]/35 text-white" : "bg-white/30 text-[#274955]"}`}>
       <div className="text-center">
